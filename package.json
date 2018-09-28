@@ -10,8 +10,9 @@
   "jsnext:main": "dist/es/index.js",
   "license": "MIT",
   "scripts": {
-    "prettier": "prettier --write '{source}/**/*.js'",
-    "prettier:diff": "prettier --list-different '{source}/**/*.js'"
+    "format": "prettier --write ./source/**/*.js",
+    "format:diff": "prettier --list-different ./source/**/*.js",
+    "typecheck": "flow check"
   },
   "repository": {
     "type": "git",
