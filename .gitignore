@@ -161,6 +161,9 @@ typings/
 # vuepress build output
 .vuepress/dist
 
+# demo/dev build output
+build/
+
 # Serverless directories
 .serverless
 

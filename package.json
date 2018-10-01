@@ -10,9 +10,14 @@
   "jsnext:main": "dist/es/index.js",
   "license": "MIT",
   "scripts": {
+    "build:demo": "yarn clean:demo && cross-env NODE_ENV=production webpack --config webpack.config.demo.js -p --bail",
+    "clean:demo": "rimraf build",
+    "lint": "eslint ./source/**/*.js",
     "format": "prettier --write ./source/**/*.js",
     "format:diff": "prettier --list-different ./source/**/*.js",
-    "typecheck": "flow check"
+    "typecheck": "flow check",
+    "deploy:demo": "yarn build:demo && gh-pages -d build",
+    "precommit": "lint-staged"
   },
   "repository": {
     "type": "git",
@@ -23,7 +28,11 @@
     "reactjs",
     "react-component",
     "truncate",
+    "truncated",
     "ellipsis",
+    "text ellipsis",
+    "content ellipsis",
+    "jsx truncate",
     "clamp",
     "clamping",
     "line-clamping",
@@ -37,10 +46,40 @@
     "url": "https://github.com/bimone/react-truncated/issues"
   },
   "devDependencies": {
-    "prettier": "^1.14.3"
+    "@babel/core": "^7.1.2",
+    "@babel/polyfill": "^7.0.0",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-flow": "^7.0.0",
+    "@babel/preset-react": "^7.0.0",
+    "autoprefixer": "^9.1.5",
+    "babel-eslint": "^10.0.1",
+    "babel-loader": "^8.0.4",
+    "cross-env": "^5.2.0",
+    "css-loader": "^1.0.0",
+    "eslint": "^5.6.1",
+    "eslint-config-fbjs": "^2.1.0",
+    "eslint-config-prettier": "^3.1.0",
+    "eslint-plugin-babel": "^5.2.1",
+    "eslint-plugin-flowtype": "^2.50.3",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-prettier": "^2.7.0",
+    "eslint-plugin-react": "^7.11.1",
+    "eslint-plugin-relay": "^0.0.28",
+    "gh-pages": "^2.0.0",
+    "html-webpack-plugin": "^3.2.0",
+    "lint-staged": "^7.3.0",
+    "postcss": "^7.0.4",
+    "postcss-cli": "^6.0.0",
+    "postcss-loader": "^3.0.0",
+    "prettier": "^1.14.3",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2",
+    "rimraf": "^2.6.2",
+    "style-loader": "^0.23.0",
+    "webpack": "^4.20.2",
+    "webpack-cli": "^3.1.2"
   },
   "peerDependencies": {
-    "react": "*",
-    "react-dom": "*"
+    "react": "*"
   }
 }
